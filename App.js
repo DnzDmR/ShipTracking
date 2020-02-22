@@ -1,6 +1,6 @@
 import React from 'react';
 import MapScreen from './source/screens/MapScreen';
-import ShipDetailSreen from './source/screens/ShipDetailSreen';
+import SearchSreen from './source/screens/SearchScreen';
 import AboutScreen from './source/screens/AboutScreen';
 
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
@@ -13,7 +13,7 @@ function App() {
     <NavigationContainer>
       <Tab.Navigator>
         <Tab.Screen name="Map" component={MapScreen} />
-        <Tab.Screen name="Detail" component={ShipDetailSreen} />
+        <Tab.Screen name="Search" component={SearchSreen} />
         <Tab.Screen name="About" component={AboutScreen} />
       </Tab.Navigator>
     </NavigationContainer>
