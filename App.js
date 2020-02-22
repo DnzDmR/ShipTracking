@@ -11,7 +11,11 @@ const Tab = createMaterialBottomTabNavigator();
 function App() {
   return (
     <NavigationContainer>
-      <Tab.Navigator>
+      <Tab.Navigator
+          activeColor="#ff0000"
+          inactiveColor="#fff"
+          barStyle={{ backgroundColor: '#2e3238' }}
+        >
         <Tab.Screen name="Map" component={MapScreen} />
         <Tab.Screen name="Search" component={SearchSreen} />
         <Tab.Screen name="About" component={AboutScreen} />
