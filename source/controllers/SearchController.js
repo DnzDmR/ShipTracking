@@ -3,9 +3,9 @@ export default class SearchController {
 
   
   
-    async getShipInfo(){
+    async getShipInfo(imo){
 
-        var url = "https://www.marinetraffic.com/en/ais/get_info_window_json?asset_type=ship&id=278335";
+        var url = "https://www.marinetraffic.com/en/ais/get_info_window_json?asset_type=ship&id="+imo;
         
         const response = await fetch(url,{
 

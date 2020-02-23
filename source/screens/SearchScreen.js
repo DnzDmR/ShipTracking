@@ -12,34 +12,36 @@ export default class SearchScreen extends Component{
         super(props);
         this.state={
           ship:null,
+          search:"",
         }
       }
     
     render(){
         
         const ship = this.state.ship;
-        console.log(ship)
+
+        const { search } = this.state;
+
         return(
             <View>
                 
-                <SearchBar placeholder="IMO" keyboardType="numeric"  />
+                <SearchBar onSubmitEditing={this.getInfo.bind(this)} placeholder="IMO" maxLength={6} keyboardType="numeric" onChangeText={this.updateSearch} value={search} />
                         
-                { this.state.ship == null ? <Text>Please Search Vessel With IMO </Text> : <ShipDetail ship={this.state.ship}></ShipDetail>}
+                { this.state.ship == null ? <Text>Test IMO : 278335 </Text> : <ShipDetail ship={this.state.ship}></ShipDetail>}
 
             </View>
         );
 
     }
 
-
-
-    componentDidMount(){
-        this.getInfo();
-    }
+    updateSearch = search => {
+        this.setState({ search });
+    };   
 
     async getInfo() {
-
-        var temp = await searchController.getShipInfo();
+        
+        var imo = this.state.search;
+        var temp = await searchController.getShipInfo(imo);
         this.setState({ship:temp})
 
     }
