@@ -31,7 +31,7 @@ export default class HomeScreens extends Component {
       marinas:[],
       defaultLatitude: 40.99825,
       defaultLongitude: 29.0024,
-      manual:[],
+      selectedTrack:[],
 
     }
   }
@@ -73,10 +73,10 @@ export default class HomeScreens extends Component {
                         />
                 ))} 
 
-                {this.state.manual.map(marker => ( 
+                {this.state.selectedTrack.map(marker => ( 
                         <Marker 
                         coordinate={{longitude:Number(marker.ship_lon),latitude:Number(marker.ship_lat)}}
-                        title={"Marinas:"+marker.shipname}>
+                        title={"Ship Name:"+marker.shipname}>
 
                           <Image source={require('../images/ship.png')} style={{height: 35, width:35 }} />
 
@@ -94,12 +94,28 @@ export default class HomeScreens extends Component {
     }
 
     componentDidUpdate(){
+
       const { route } = this.props;
-    
-      if(route?.params?.ship && this.state.manual.length === 0 ){
-        this.setState({ manual: [...this.state.manual, route.params.ship.values] })  
-        this.setState({defaultLatitude:Number(route.params.ship.values.ship_lat)})        
-        this.setState({defaultLongitude:Number(route.params.ship.values.ship_lon)})        
+
+      if(route?.params?.ship && this.state.selectedTrack.length > 0){
+        if(route.params.ship.values.shipname != this.state.selectedTrack[0].shipname){
+      
+          let tempArray = [...this.state.selectedTrack];
+          tempArray[0] = route.params.ship.values;
+          this.setState({selectedTrack: tempArray});
+
+        
+          this.setState({defaultLatitude:Number(route.params.ship.values.ship_lat)}) 
+          this.setState({defaultLongitude:Number(route.params.ship.values.ship_lon)}) 
+        }
+      }
+      
+      if(route?.params?.ship && this.state.selectedTrack.length === 0 ){
+
+        this.setState({ selectedTrack: [...this.state.selectedTrack, route.params.ship.values] }) 
+        this.setState({defaultLatitude:Number(route.params.ship.values.ship_lat)}) 
+        this.setState({defaultLongitude:Number(route.params.ship.values.ship_lon)}) 
+
       }
     }
 
