@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {View,Text,StyleSheet} from 'react-native';
+import {View,Image,Text,StyleSheet} from 'react-native';
 import MapView,{Marker} from 'react-native-maps';
 import MapController from '../controllers/MapController';
 
@@ -76,8 +76,11 @@ export default class HomeScreens extends Component {
                 {this.state.manual.map(marker => ( 
                         <Marker 
                         coordinate={{longitude:Number(marker.ship_lon),latitude:Number(marker.ship_lat)}}
-                        title={"Marinas:"+marker.shipname}
-                        />
+                        title={"Marinas:"+marker.shipname}>
+
+                          <Image source={require('../images/ship.png')} style={{height: 35, width:35 }} />
+
+                        </Marker>
                 ))} 
 
             </MapView>
