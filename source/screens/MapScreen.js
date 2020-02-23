@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {View,StyleSheet} from 'react-native';
+import {View,Text,StyleSheet} from 'react-native';
 import MapView,{Marker} from 'react-native-maps';
 import MapController from '../controllers/MapController';
 
@@ -29,19 +29,32 @@ export default class HomeScreens extends Component {
       lights:[],
       ports:[],
       marinas:[],
+      defaultLatitude: 40.99825,
+      defaultLongitude: 29.0024,
 
     }
   }
     
     render(){
+      
+      
+      const { route } = this.props;
+      /*
+      if(route?.params?.ship){
+        
+        this.setState({defaultLatitude:route.params.ship.values.ship_lat})
+        this.setState({defaultLongitude:route.params.ship.values.ship_lon})
+        
+      }
+      */
 
       return (
         <View style={styles.container}>
             <MapView
             style={styles.map}
             region={{
-                latitude: 40.99825,
-                longitude: 29.0024,
+                latitude: this.state.defaultLatitude,
+                longitude: this.state.defaultLongitude,
                 latitudeDelta: 0.1050,
                 longitudeDelta: 0.1021,
             }}

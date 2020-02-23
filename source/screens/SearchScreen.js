@@ -27,7 +27,7 @@ export default class SearchScreen extends Component{
                 
                 <SearchBar onSubmitEditing={this.getInfo.bind(this)} placeholder="IMO" maxLength={6} keyboardType="numeric" onChangeText={this.updateSearch} value={search} />
                         
-                { this.state.ship == null ? <Text>Test IMO : 278335 </Text> : <ShipDetail ship={this.state.ship}></ShipDetail>}
+                { this.state.ship == null ? <Text>Test IMO : 278335 </Text> : <ShipDetail base={this} ship={this.state.ship}></ShipDetail>}
 
             </View>
         );
