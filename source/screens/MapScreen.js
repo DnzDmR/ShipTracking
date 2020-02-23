@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
  });
 
 
- var b = true;
+
 export default class HomeScreens extends Component {
     
   constructor(props){
@@ -31,22 +31,15 @@ export default class HomeScreens extends Component {
       marinas:[],
       defaultLatitude: 40.99825,
       defaultLongitude: 29.0024,
+      manual:[],
 
     }
   }
+   
     
     render(){
       
       
-      const { route } = this.props;
-      /*
-      if(route?.params?.ship){
-        
-        this.setState({defaultLatitude:route.params.ship.values.ship_lat})
-        this.setState({defaultLongitude:route.params.ship.values.ship_lon})
-        
-      }
-      */
 
       return (
         <View style={styles.container}>
@@ -80,6 +73,13 @@ export default class HomeScreens extends Component {
                         />
                 ))} 
 
+                {this.state.manual.map(marker => ( 
+                        <Marker 
+                        coordinate={{longitude:Number(marker.ship_lon),latitude:Number(marker.ship_lat)}}
+                        title={"Marinas:"+marker.shipname}
+                        />
+                ))} 
+
             </MapView>
       </View>
 
@@ -88,6 +88,16 @@ export default class HomeScreens extends Component {
 
     componentDidMount(){
       this.setLights();
+    }
+
+    componentDidUpdate(){
+      const { route } = this.props;
+    
+      if(route?.params?.ship && this.state.manual.length === 0 ){
+        this.setState({ manual: [...this.state.manual, route.params.ship.values] })  
+        this.setState({defaultLatitude:Number(route.params.ship.values.ship_lat)})        
+        this.setState({defaultLongitude:Number(route.params.ship.values.ship_lon)})        
+      }
     }
 
     async setLights() {
