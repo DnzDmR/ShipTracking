@@ -55,31 +55,33 @@ export default class HomeScreens extends Component {
                 {this.state.lights.map(marker => (
                         <Marker 
                         coordinate={{longitude:Number(marker.LON),latitude:Number(marker.LAT)}}
-                        title={"Light:"+marker.LIGHT_NAME}
-                        />
+                        title={marker.LIGHT_NAME}>
+                          <Image source={require('../images/lighthouse.png')} style={{height: 40, width:20 }} />
+                        </Marker>
                 ))} 
 
                 {this.state.ports.map(marker => (
                         <Marker 
                         coordinate={{longitude:Number(marker[2]),latitude:Number(marker[3])}}
-                        title={"Ports:"+marker[1]}
-                        />
+                        title={marker[1]}
+                        > 
+                        <Image source={require('../images/port.png')} style={{height: 40, width:25 }} />
+                        </Marker>
                 ))} 
 
                 {this.state.marinas.map(marker => (
                         <Marker 
                         coordinate={{longitude:Number(marker.CENTERX),latitude:Number(marker.CENTERY)}}
-                        title={"Marinas:"+marker.PORT_NAME}
-                        />
+                        title={marker.PORT_NAME}>
+                           <Image source={require('../images/marine.png')} style={{height: 40, width:40 }} />
+                        </Marker>
                 ))} 
 
                 {this.state.selectedTrack.map(marker => ( 
                         <Marker 
                         coordinate={{longitude:Number(marker.ship_lon),latitude:Number(marker.ship_lat)}}
-                        title={"Ship Name:"+marker.shipname}>
-
+                        title={marker.shipname}>
                           <Image source={require('../images/ship.png')} style={{height: 35, width:35 }} />
-
                         </Marker>
                 ))} 
 
