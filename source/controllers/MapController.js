@@ -5,7 +5,7 @@ export default class MapController {
   
     async getAssetList(){
 
-        var url = "https://www.marinetraffic.com/map/getStaticAssetsjson_v3/z:15/X:9513/Y:6143/port:1/marina:1/lights:1/bd:1";
+        var url = "https://www.marinetraffic.com/map/getStaticAssetsjson_v3/z:11/X:594/Y:383/port:1/marina:1/lights:1/bd:1";
         
         const response = await fetch(url,{
 

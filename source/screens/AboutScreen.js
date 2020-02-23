@@ -1,9 +1,15 @@
 import React from 'react';
-import {Text} from 'react-native';
+import {ScrollView} from 'react-native';
+import {Card} from 'react-native-elements';
 
 const AboutScreen = () => {
     return(
-        <Text>About</Text>
+        <ScrollView style={{marginBottom:75}}>
+             <Card title="About Page">
+
+                
+             </Card>
+        </ScrollView>
     );
 
 }

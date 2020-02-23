@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {View,Image,Text,StyleSheet} from 'react-native';
+import {View,Image,StyleSheet} from 'react-native';
 import MapView,{Marker} from 'react-native-maps';
 import MapController from '../controllers/MapController';
 
@@ -52,36 +52,36 @@ export default class HomeScreens extends Component {
                 longitudeDelta: 0.1021,
             }}
             >
-                {this.state.lights.map(marker => (
-                        <Marker 
+                {this.state.lights.map((marker,index) => (
+                        <Marker key={index}
                         coordinate={{longitude:Number(marker.LON),latitude:Number(marker.LAT)}}
                         title={marker.LIGHT_NAME}>
-                          <Image source={require('../images/lighthouse.png')} style={{height: 40, width:20 }} />
+                          <Image source={require('../images/lighthouse.png')} style={{height: 20, width:10 }} />
                         </Marker>
                 ))} 
 
-                {this.state.ports.map(marker => (
-                        <Marker 
+                {this.state.ports.map((marker,index) => (
+                        <Marker key={index}
                         coordinate={{longitude:Number(marker[2]),latitude:Number(marker[3])}}
                         title={marker[1]}
                         > 
-                        <Image source={require('../images/port.png')} style={{height: 40, width:25 }} />
+                        <Image source={require('../images/port.png')} style={{height: 35, width:25 }} />
                         </Marker>
                 ))} 
 
-                {this.state.marinas.map(marker => (
-                        <Marker 
+                {this.state.marinas.map((marker,index) => (
+                        <Marker key={index}
                         coordinate={{longitude:Number(marker.CENTERX),latitude:Number(marker.CENTERY)}}
                         title={marker.PORT_NAME}>
-                           <Image source={require('../images/marine.png')} style={{height: 40, width:40 }} />
+                           <Image source={require('../images/marine.png')} style={{height: 35, width:35 }} />
                         </Marker>
                 ))} 
 
-                {this.state.selectedTrack.map(marker => ( 
-                        <Marker 
+                {this.state.selectedTrack.map((marker,index) => ( 
+                        <Marker key={index}
                         coordinate={{longitude:Number(marker.ship_lon),latitude:Number(marker.ship_lat)}}
                         title={marker.shipname}>
-                          <Image source={require('../images/ship.png')} style={{height: 35, width:35 }} />
+                          <Image source={require('../images/ship.png')} style={{height: 35, width:40 }} />
                         </Marker>
                 ))} 
 

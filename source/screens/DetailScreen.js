@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import {Text,Button,TextInput,View} from 'react-native';
-import SearchController from '../controllers/SearchController';
+import {Text,View} from 'react-native';
+import DetailController from '../controllers/DetailController';
 import ShipDetail from '../components/ShipDetail';
 import { SearchBar } from 'react-native-elements';
 
-const searchController = new SearchController();
+const detailController = new DetailController();
 
-export default class SearchScreen extends Component{
+export default class DetailScreen extends Component{
 
     constructor(props){
         super(props);
@@ -17,9 +17,7 @@ export default class SearchScreen extends Component{
       }
     
     render(){
-        
-        const ship = this.state.ship;
-
+                
         const { search } = this.state;
 
         return(
@@ -27,7 +25,7 @@ export default class SearchScreen extends Component{
                 
                 <SearchBar onSubmitEditing={this.getInfo.bind(this)} placeholder="IMO" maxLength={7} keyboardType="numeric" onChangeText={this.updateSearch} value={search} />
                         
-                { this.state.ship == null ? <Text>Test Ship ID : 278335  IMO : 9353113</Text> : <ShipDetail base={this} ship={this.state.ship}></ShipDetail>}
+                { this.state.ship == null ? <Text></Text> : <ShipDetail base={this} ship={this.state.ship}></ShipDetail>}
 
             </View>
         );
@@ -41,7 +39,7 @@ export default class SearchScreen extends Component{
     async getInfo() {
         
         var imo = this.state.search;
-        var temp = await searchController.getShipInfo(imo);
+        var temp = await detailController.getShipInfo(imo);
         this.setState({ship:temp})
 
     }

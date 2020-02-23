@@ -1,5 +1,5 @@
 
-export default class SearchController {
+export default class DetailController {
 
   
   

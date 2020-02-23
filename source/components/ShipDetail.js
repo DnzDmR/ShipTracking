@@ -1,6 +1,6 @@
 import React, { Component} from 'react';
 import {ScrollView} from 'react-native';
-import {Card, ListItem, Button } from 'react-native-elements'
+import {Card, ListItem, Button } from 'react-native-elements';
 import PropTypes from 'prop-types';
 
 export default class ShipDetail extends Component{

@@ -1,6 +1,6 @@
 import React from 'react';
 import MapScreen from './source/screens/MapScreen';
-import SearchSreen from './source/screens/SearchScreen';
+import DetailScreen from './source/screens/DetailScreen';
 import AboutScreen from './source/screens/AboutScreen';
 
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
@@ -19,7 +19,7 @@ function App() {
           barStyle={{ backgroundColor: '#2e3238' }}>
         <Tab.Screen name="Live Map" component={MapScreen} 
           options={{ tabBarIcon: ({color,size}) => (<Icon name="map" size={18} color={color} />)}}/>
-        <Tab.Screen name="Ship Detail" component={SearchSreen} 
+        <Tab.Screen name="Ship Detail" component={DetailScreen} 
           options={{ tabBarIcon: ({color,size}) => (<Icon name="ship" size={18} color={color} />)}}/>
         <Tab.Screen name="About" component={AboutScreen} 
           options={{ tabBarIcon: ({color,size}) => (<Icon name="address-card" size={18} color={color} />)}}/>
